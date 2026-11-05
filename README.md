@@ -108,16 +108,6 @@ The training and validation curves provide insight into how the model learns and
 
 The best checkpoint is selected based on validation accuracy rather than simply using the final training epoch. This helps retain the model with the best observed validation performance.
 
-## Discussion
-
-The affine transformation configuration achieved the highest validation accuracy among the tested approaches (99.74%). This suggests that introducing moderate variations in digit position, orientation, and scale can improve generalization.
-
-Random erasing and dilation did not outperform the model trained without augmentation. Combining multiple transformations also did not necessarily improve performance, indicating that the choice and intensity of augmentation are important.
-
-Inspection of misclassified examples also revealed images whose assigned labels appear inconsistent with the digits shown. Such potential labeling errors can affect both training and evaluation: mislabeled training examples provide incorrect supervision, while mislabeled validation examples can make the measured accuracy lower than the model's actual recognition ability.
-
-These findings should be interpreted with some caution, as each configuration was evaluated using a single training run. Model initialization, data shuffling, augmentation randomness, architecture, and training hyperparameters can all influence the results.
-
 ### Confusion Matrices
 
 Confusion matrices show how predictions are distributed across the ten digit classes and help identify which digits are most frequently confused.
@@ -188,6 +178,15 @@ Inspecting misclassified images provides additional insight into model errors, p
   </tr>
 </table>
 
+## Discussion
+
+The affine transformation configuration achieved the highest validation accuracy among the tested approaches (99.74%). This suggests that introducing moderate variations in digit position, orientation, and scale can improve generalization.
+
+Random erasing and dilation did not outperform the model trained without augmentation. Combining multiple transformations also did not necessarily improve performance, indicating that the choice and intensity of augmentation are important.
+
+Inspection of misclassified examples also revealed images whose assigned labels appear inconsistent with the digits shown. Such potential labeling errors can affect both training and evaluation: mislabeled training examples provide incorrect supervision, while mislabeled validation examples can make the measured accuracy lower than the model's actual recognition ability.
+
+These findings should be interpreted with some caution, as each configuration was evaluated using a single training run. Model initialization, data shuffling, augmentation randomness, architecture, and training hyperparameters can all influence the results.
 
 ## Technologies Used
 
